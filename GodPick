@@ -1,0 +1,55 @@
+package me.begreen98.armup;
+
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
+
+public class GodPick implements CommandExecutor {
+
+  @Override
+	public boolean onCommand(CommandSender sender, Command cmd,
+			String commandLabel, String[] args) {
+		if (commandLabel.equalsIgnoreCase("GodPick")) {
+			if (args.length == 0) {
+				if (sender instanceof Player) {
+					Player player = (Player) sender;
+					ItemStack GodPick = new ItemStack(Material.DIAMOND_PICKAXE);
+					PlayerInventory pi = player.getInventory();
+					GodPick.addEnchantment(Enchantment.SILK_TOUCH, 1);
+					GodPick.addEnchantment(Enchantment.LOOT_BONUS_BLOCKS, 3);
+					GodPick.addEnchantment(Enchantment.DURABILITY, 3);
+					GodPick.addEnchantment(Enchantment.DIG_SPEED, 5);
+					pi.addItem(GodPick);
+					player.sendMessage(ChatColor.YELLOW
+							+ "You have been given a God Pickaxe!");
+				}
+			} else if (args.length == 1) {
+				if (sender.getServer().getPlayer(args[0]) != null) {
+					Player targetPlayer = sender.getServer().getPlayer(args[0]);
+					ItemStack GodPick = new ItemStack(Material.DIAMOND_PICKAXE);
+					PlayerInventory pi = targetPlayer.getInventory();
+					GodPick.addEnchantment(Enchantment.SILK_TOUCH, 1);
+					GodPick.addEnchantment(Enchantment.LOOT_BONUS_BLOCKS, 3);
+					GodPick.addEnchantment(Enchantment.DURABILITY, 3);
+					GodPick.addEnchantment(Enchantment.DIG_SPEED, 5);
+					pi.addItem(GodPick);
+					sender.sendMessage(ChatColor.YELLOW
+							+ "You have been given "
+							+ targetPlayer.getDisplayName() + " a God Pickaxe!");
+					targetPlayer.sendMessage(ChatColor.YELLOW
+							+ "You have been given a God Pickaxe by "
+							+ sender.getName() + "!");
+				} else {
+					sender.sendMessage(ChatColor.DARK_RED + "Player not found!");
+				}
+			}
+		}
+		return false;
+	}
+}
