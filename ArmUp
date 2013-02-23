@@ -1,0 +1,79 @@
+package me.begreen98.armup;
+
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
+
+public class ArmUp implements CommandExecutor {
+
+  @Override
+	public boolean onCommand(CommandSender sender, Command cmd,
+			String commandLabel, String[] args) {
+		if (commandLabel.equalsIgnoreCase("ArmUp")) {
+			if (sender instanceof Player) {
+				Player player = (Player) sender;
+				if (args.length == 0) {
+					ItemStack Diamond_Sword = new ItemStack(
+							Material.DIAMOND_SWORD, 1);
+					ItemStack Diamond_Boots = new ItemStack(
+							Material.DIAMOND_BOOTS, 1);
+					ItemStack Diamond_Pants = new ItemStack(
+							Material.DIAMOND_LEGGINGS, 1);
+					ItemStack Diamond_Shirt = new ItemStack(
+							Material.DIAMOND_CHESTPLATE, 1);
+					ItemStack Diamond_Hat = new ItemStack(
+							Material.DIAMOND_HELMET, 1);
+					ItemStack Bow = new ItemStack(Material.BOW, 1);
+					ItemStack Arrows = new ItemStack(Material.ARROW, 64);
+					PlayerInventory pi = player.getInventory();
+					pi.addItem(Diamond_Sword);
+					pi.setBoots(Diamond_Boots);
+					pi.setLeggings(Diamond_Pants);
+					pi.setChestplate(Diamond_Shirt);
+					pi.setHelmet(Diamond_Hat);
+					pi.addItem(Bow);
+					pi.addItem(Arrows);
+					player.sendMessage(ChatColor.RED
+							+ "You have been armed for battle!");
+				}
+			} else if (args.length == 1) {
+				if (sender.getServer().getPlayer(args[0]) != null) {
+					Player targetPlayer = sender.getServer().getPlayer(args[0]);
+					ItemStack Diamond_Sword = new ItemStack(
+							Material.DIAMOND_SWORD, 1);
+					ItemStack Diamond_Boots = new ItemStack(
+							Material.DIAMOND_BOOTS, 1);
+					ItemStack Diamond_Pants = new ItemStack(
+							Material.DIAMOND_LEGGINGS, 1);
+					ItemStack Diamond_Shirt = new ItemStack(
+							Material.DIAMOND_CHESTPLATE, 1);
+					ItemStack Diamond_Hat = new ItemStack(
+							Material.DIAMOND_HELMET, 1);
+					ItemStack Bow = new ItemStack(Material.BOW, 1);
+					ItemStack Arrows = new ItemStack(Material.ARROW, 64);
+					PlayerInventory pi = targetPlayer.getInventory();
+					pi.addItem(Diamond_Sword);
+					pi.setBoots(Diamond_Boots);
+					pi.setLeggings(Diamond_Pants);
+					pi.setChestplate(Diamond_Shirt);
+					pi.setHelmet(Diamond_Hat);
+					pi.addItem(Bow);
+					pi.addItem(Arrows);
+					targetPlayer.sendMessage(ChatColor.RED
+							+ "You have been armed for battle by "
+							+ sender.getName() + "!");
+					sender.sendMessage(ChatColor.RED + "You have armed "
+							+ targetPlayer.getName() + " for battle!");
+				} else {
+					sender.sendMessage(ChatColor.DARK_RED + "Player not found!");
+				}
+			}
+		}
+		return false;
+	}
+}
