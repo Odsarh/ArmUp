@@ -1,0 +1,61 @@
+package me.begreen98.armup;
+
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
+
+public class GodSword implements CommandExecutor {
+
+  @Override
+	public boolean onCommand(CommandSender sender, Command cmd,
+			String commandLabel, String[] args) {
+		if (commandLabel.equalsIgnoreCase("GodSword")) {
+			if (sender instanceof Player) {
+				Player player = (Player) sender;
+				if (args.length == 0) {
+					ItemStack GodSword = new ItemStack(Material.DIAMOND_SWORD);
+					PlayerInventory pi = player.getInventory();
+					GodSword.addEnchantment(Enchantment.FIRE_ASPECT, 2); // Good
+					GodSword.addEnchantment(Enchantment.KNOCKBACK, 2); // Good
+					GodSword.addEnchantment(Enchantment.DAMAGE_ALL, 5); // Good
+					GodSword.addEnchantment(Enchantment.DAMAGE_UNDEAD, 5); // Good
+					GodSword.addEnchantment(Enchantment.DAMAGE_ARTHROPODS, 5); // Good
+					GodSword.addEnchantment(Enchantment.LOOT_BONUS_MOBS, 3);
+					GodSword.addEnchantment(Enchantment.DURABILITY, 3);
+					pi.addItem(GodSword);
+					player.sendMessage(ChatColor.YELLOW
+							+ "You have been given a God Sword");
+				}
+			} else if (args.length == 1) {
+				if (sender.getServer().getPlayer(args[0]) != null) {
+					Player targetPlayer = sender.getServer().getPlayer(args[0]);
+					ItemStack GodSword = new ItemStack(Material.DIAMOND_SWORD);
+					PlayerInventory tpi = targetPlayer.getInventory();
+					GodSword.addEnchantment(Enchantment.FIRE_ASPECT, 2); // Good
+					GodSword.addEnchantment(Enchantment.KNOCKBACK, 2); // Good
+					GodSword.addEnchantment(Enchantment.DAMAGE_ALL, 5); // Good
+					GodSword.addEnchantment(Enchantment.DAMAGE_UNDEAD, 5); // Good
+					GodSword.addEnchantment(Enchantment.DAMAGE_ARTHROPODS, 5); // Good
+					GodSword.addEnchantment(Enchantment.LOOT_BONUS_MOBS, 3);
+					GodSword.addEnchantment(Enchantment.DURABILITY, 3);
+					tpi.addItem(GodSword);
+					targetPlayer.sendMessage(ChatColor.YELLOW
+							+ "You have been given a God Sword by "
+							+ sender.getName() + ChatColor.YELLOW + "!");
+					sender.sendMessage(ChatColor.YELLOW + "You have given "
+							+ targetPlayer.getDisplayName() + ChatColor.YELLOW
+							+ " a God Sword!");
+				} else {
+					sender.sendMessage(ChatColor.DARK_RED + "Player not found!");
+				}
+			}
+		}
+		return false;
+	}
+}
