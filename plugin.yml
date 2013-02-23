@@ -1,0 +1,26 @@
+name: Arm up
+main: me.begreen98.armup.Main
+version: 2.1
+description: >
+             Makes you ready for battle!
+commands:
+   armup:
+      description: This is a demo command.
+      permission: Armup.arm
+      permission-message: You don't have permission to arm people!
+   GodSword:
+      description: This is a demo command.
+      permission: Armup.GodSword
+      permission-message: You don't have permission to give people a God Sword!
+   GodArmUp:
+      description: This is a demo command.
+      permission: Armup.GodArmUp
+      permission-message: You don't have permission to arm people!
+   GodBow:
+      description: This is a demo command.
+      permission: Armup.GodBow
+      permission-message: You don't have permission to arm people!
+   GodPick:
+      description: This is a demo command.
+      permission: Armup.GodPick
+      permission-message: You don't have permission to arm people!
