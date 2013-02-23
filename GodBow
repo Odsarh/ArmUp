@@ -1,0 +1,56 @@
+package me.begreen98.armup;
+
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
+
+public class GodBow implements CommandExecutor {
+
+  @Override
+	public boolean onCommand(CommandSender sender, Command cmd,
+			String commandLabel, String[] args) {
+		if (commandLabel.equalsIgnoreCase("GodBow")) {
+			if (args.length == 0) {
+				if (sender instanceof Player) {
+					Player player = (Player) sender;
+					ItemStack GodBow = new ItemStack(Material.BOW);
+					PlayerInventory pi = player.getInventory();
+					GodBow.addEnchantment(Enchantment.ARROW_DAMAGE, 5);
+					GodBow.addEnchantment(Enchantment.ARROW_FIRE, 1);
+					GodBow.addEnchantment(Enchantment.ARROW_INFINITE, 1);
+					GodBow.addEnchantment(Enchantment.ARROW_KNOCKBACK, 2);
+					GodBow.addEnchantment(Enchantment.DURABILITY, 3);
+					pi.addItem(GodBow);
+					player.sendMessage(ChatColor.YELLOW
+							+ "You have been given a God Bow!");
+				}
+			} else if (args.length == 1) {
+				if (sender.getServer().getPlayer(args[0]) != null) {
+					Player targetPlayer = sender.getServer().getPlayer(args[0]);
+					ItemStack GodBow = new ItemStack(Material.BOW);
+					PlayerInventory pi = targetPlayer.getInventory();
+					GodBow.addEnchantment(Enchantment.ARROW_DAMAGE, 5);
+					GodBow.addEnchantment(Enchantment.ARROW_FIRE, 1);
+					GodBow.addEnchantment(Enchantment.ARROW_INFINITE, 1);
+					GodBow.addEnchantment(Enchantment.ARROW_KNOCKBACK, 2);
+					GodBow.addEnchantment(Enchantment.DURABILITY, 3);
+					pi.addItem(GodBow);
+					sender.sendMessage(ChatColor.YELLOW + "You have given "
+							+ targetPlayer.getDisplayName() + " a God Bow!");
+					targetPlayer.sendMessage(ChatColor.YELLOW
+							+ "You have been given a God Bow by "
+							+ sender.getName() + "!");
+				} else {
+					sender.sendMessage(ChatColor.DARK_RED + "Player not found!");
+				}
+			}
+		}
+		return false;
+	}
+}
