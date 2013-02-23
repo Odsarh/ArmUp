@@ -1,0 +1,149 @@
+package me.begreen98.armup;
+
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
+
+public class GodArmUp implements CommandExecutor {
+
+  @Override
+	public boolean onCommand(CommandSender sender, Command cmd,
+			String commandLabel, String[] args) {
+		if (commandLabel.equalsIgnoreCase("GodArmUp")) {
+			if (sender instanceof Player) {
+				Player player = (Player) sender;
+				if (args.length == 0) {
+					ItemStack GodSword = new ItemStack(Material.DIAMOND_SWORD);
+					ItemStack GodBow = new ItemStack(Material.BOW);
+					ItemStack GodBoots = new ItemStack(Material.DIAMOND_BOOTS);
+					ItemStack GodPants = new ItemStack(
+							Material.DIAMOND_LEGGINGS);
+					ItemStack GodShirt = new ItemStack(
+							Material.DIAMOND_CHESTPLATE);
+					ItemStack GodHat = new ItemStack(Material.DIAMOND_HELMET);
+					ItemStack Arrow = new ItemStack(Material.ARROW);
+					PlayerInventory pi = player.getInventory();
+					GodSword.addEnchantment(Enchantment.FIRE_ASPECT, 2); // Good
+					GodSword.addEnchantment(Enchantment.KNOCKBACK, 2); // Good
+					GodSword.addEnchantment(Enchantment.DAMAGE_ALL, 5); // Good
+					GodSword.addEnchantment(Enchantment.DAMAGE_UNDEAD, 5); // Good
+					GodSword.addEnchantment(Enchantment.DAMAGE_ARTHROPODS, 5); // Good
+					GodSword.addEnchantment(Enchantment.LOOT_BONUS_MOBS, 3);
+					GodSword.addEnchantment(Enchantment.DURABILITY, 3);
+					GodBow.addEnchantment(Enchantment.ARROW_DAMAGE, 5);
+					GodBow.addEnchantment(Enchantment.ARROW_FIRE, 1);
+					GodBow.addEnchantment(Enchantment.ARROW_INFINITE, 1);
+					GodBow.addEnchantment(Enchantment.ARROW_KNOCKBACK, 2);
+					GodBoots.addEnchantment(Enchantment.THORNS, 3);
+					GodBoots.addEnchantment(Enchantment.PROTECTION_FALL, 4);
+					GodBoots.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
+					GodBoots.addEnchantment(
+							Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+					GodBoots.addEnchantment(Enchantment.PROTECTION_PROJECTILE,
+							4);
+					GodPants.addEnchantment(Enchantment.THORNS, 3);
+					GodPants.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
+					GodPants.addEnchantment(
+							Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+					GodPants.addEnchantment(Enchantment.PROTECTION_PROJECTILE,
+							4);
+					GodShirt.addEnchantment(Enchantment.THORNS, 3);
+					GodShirt.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
+					GodShirt.addEnchantment(
+							Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+					GodShirt.addEnchantment(Enchantment.PROTECTION_PROJECTILE,
+							4);
+					GodHat.addEnchantment(Enchantment.THORNS, 3);
+					GodHat.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
+					GodHat.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL,
+							4);
+					GodHat.addEnchantment(Enchantment.PROTECTION_PROJECTILE, 4);
+					GodHat.addEnchantment(Enchantment.OXYGEN, 1);
+					pi.addItem(GodSword);
+					pi.addItem(GodBow);
+					pi.setBoots(GodBoots);
+					pi.setLeggings(GodPants);
+					pi.setChestplate(GodShirt);
+					pi.setHelmet(GodHat);
+					pi.addItem(Arrow);
+					player.sendMessage(ChatColor.YELLOW
+							+ "You have been armed up with God Supplys!");
+				}
+			} else if (args.length == 1) {
+				if (sender.getServer().getPlayer(args[0]) != null) {
+					Player targetPlayer = sender.getServer().getPlayer(args[0]);
+					ItemStack GodSword = new ItemStack(Material.DIAMOND_SWORD);
+					ItemStack GodBow = new ItemStack(Material.BOW);
+					ItemStack GodBoots = new ItemStack(Material.DIAMOND_BOOTS);
+					ItemStack GodPants = new ItemStack(
+							Material.DIAMOND_LEGGINGS);
+					ItemStack GodShirt = new ItemStack(
+							Material.DIAMOND_CHESTPLATE);
+					ItemStack GodHat = new ItemStack(Material.DIAMOND_HELMET);
+					ItemStack Arrow = new ItemStack(Material.ARROW);
+					PlayerInventory pi = targetPlayer.getInventory();
+					GodSword.addEnchantment(Enchantment.FIRE_ASPECT, 2); // Good
+					GodSword.addEnchantment(Enchantment.KNOCKBACK, 2); // Good
+					GodSword.addEnchantment(Enchantment.DAMAGE_ALL, 5); // Good
+					GodSword.addEnchantment(Enchantment.DAMAGE_UNDEAD, 5); // Good
+					GodSword.addEnchantment(Enchantment.DAMAGE_ARTHROPODS, 5); // Good
+					GodSword.addEnchantment(Enchantment.LOOT_BONUS_MOBS, 3);
+					GodSword.addEnchantment(Enchantment.DURABILITY, 3);
+					GodBow.addEnchantment(Enchantment.DURABILITY, 3);
+					GodBow.addEnchantment(Enchantment.ARROW_DAMAGE, 5);
+					GodBow.addEnchantment(Enchantment.ARROW_FIRE, 1);
+					GodBow.addEnchantment(Enchantment.ARROW_INFINITE, 1);
+					GodBow.addEnchantment(Enchantment.ARROW_KNOCKBACK, 2);
+					GodBoots.addEnchantment(Enchantment.THORNS, 3);
+					GodBoots.addEnchantment(Enchantment.PROTECTION_FALL, 4);
+					GodBoots.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
+					GodBoots.addEnchantment(
+							Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+					GodBoots.addEnchantment(Enchantment.PROTECTION_PROJECTILE,
+							4);
+					GodPants.addEnchantment(Enchantment.THORNS, 3);
+					GodPants.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
+					GodPants.addEnchantment(
+							Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+					GodPants.addEnchantment(Enchantment.PROTECTION_PROJECTILE,
+							4);
+					GodShirt.addEnchantment(Enchantment.THORNS, 3);
+					GodShirt.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
+					GodShirt.addEnchantment(
+							Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+					GodShirt.addEnchantment(Enchantment.PROTECTION_PROJECTILE,
+							4);
+					GodHat.addEnchantment(Enchantment.THORNS, 3);
+					GodHat.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
+					GodHat.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL,
+							4);
+					GodHat.addEnchantment(Enchantment.PROTECTION_PROJECTILE, 4);
+					GodHat.addEnchantment(Enchantment.OXYGEN, 1);
+					pi.addItem(GodSword);
+					pi.addItem(GodBow);
+					pi.setBoots(GodBoots);
+					pi.setLeggings(GodPants);
+					pi.setChestplate(GodShirt);
+					pi.setHelmet(GodHat);
+					pi.addItem(Arrow);
+					sender.sendMessage(ChatColor.YELLOW + "You have armed "
+							+ targetPlayer.getDisplayName()
+							+ " with God Supplys!");
+					targetPlayer.sendMessage(ChatColor.YELLOW
+							+ "You have been armed with God Supplys by "
+							+ sender.getName() + "!");
+				} else {
+					sender.sendMessage(ChatColor.DARK_RED + "Player not found!");
+				}
+			}
+		}
+		return false;
+
+	}
+}
